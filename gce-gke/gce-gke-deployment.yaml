@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment-gke
+spec:
+  selector:
+    matchLabels:
+      app: deployment-gke
+  template:
+    metadata:
+      labels:
+        app: deployment-gke 
+    spec:
+      containers:
+      - name: hello
+        image: "gcr.io/google-samples/hello-app:2.0"
+        env:
+        - name: "PORT"
+          value: "9001"

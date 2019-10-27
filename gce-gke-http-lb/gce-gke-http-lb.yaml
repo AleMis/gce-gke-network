@@ -1,0 +1,16 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: http-lb
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /gcp_srv1
+        backend:
+          serviceName: service1
+          servicePort: 8080
+      - path: /gcp_srv2
+        backend:
+          serviceName: service2
+          servicePort: 8080

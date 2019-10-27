@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: service2
+spec:
+  selector:
+    matchLabels:
+      app: service2
+  replicas: 1
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: service2
+    spec:
+      containers:
+      - name: echo-image-2
+        image: "gcr.io/test-kube-gke/hashicorp/http-echo:v1"
+        args:
+        - "-text=Service 2 is ready!"
+        ports:
+        - containerPort: 5678
